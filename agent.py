@@ -35,6 +35,8 @@ def get_client(provider):
         else:
             # Fallback: use OpenAI client with Groq base URL
             return OpenAI(base_url="https://api.groq.com/openai/v1", api_key=api_key)
+    elif provider == "ollama":
+        return OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
     else:
         print(f"Error: Unknown provider '{provider}'")
         return None
@@ -313,9 +315,7 @@ def extract_balanced_json(text, start_pos):
     return None
 
 MODEL_LIST = [
-    {"provider": "openrouter", "model": "free"},
-    {"provider": "groq",       "model": "llama-3.3-70b-versatile"},
-    {"provider": "groq",       "model": "llama-3.1-8b-instant"},
+    {"provider": "ollama", "model": "gemma:7b"},
 ]
 
 
