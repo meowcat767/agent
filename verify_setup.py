@@ -34,10 +34,10 @@ def verify():
 
     # Check .env
     load_dotenv()
-    if os.getenv("OPENROUTER_API_KEY"):
-        print("[OK] OPENROUTER_API_KEY found in .env.")
+    if os.getenv("GIT_USERNAME") and os.getenv("GIT_TOKEN"):
+        print("[OK] Git credentials found in .env.")
     else:
-        print("[INFO] OPENROUTER_API_KEY not found in .env.")
+        print("[INFO] Git credentials not fully configured in .env.")
 
 if __name__ == "__main__":
     verify()
